@@ -23,66 +23,28 @@ this.init_wheel = function()
 	//alert(this.centreX +','+this.centreY);	
 	
 	
-	$(self.div).bind('mousemove', function(event)
-	{
-		$("#info").append().text("mouseX = "+event.clientX+","+"mouseY = "+event.clientY+"\n"
-		+"this.centreX = "+self.centreX+","+"this.centreY = "+self.centreY
-		+"$(self.div).position().left = "+$(self.div).position().left+","+"$(self.div).position().top = "+$(self.div).position().top
-		+"self.translationAccX = "+self.translationAccX+","+"this.translationAccY = "+self.translationAccY
-		);
+	// $(self.div).bind('mousemove', function(event)
+	// {
+		// $("#info").append().text("mouseX = "+event.clientX+","+"mouseY = "+event.clientY+"\n"
+		// +"this.centreX = "+self.centreX+","+"this.centreY = "+self.centreY
+		// +"$(self.div).position().left = "+$(self.div).position().left+","+"$(self.div).position().top = "+$(self.div).position().top
+		// +"self.translationAccX = "+self.translationAccX+","+"this.translationAccY = "+self.translationAccY
+		// );
 
-		
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
-			
-	}
-	);
+	// }
+	// );
 	
 		
 	$(self.div).bind('mousewheel', function(event, delta) {
 	
-		// alert("x, " + event.clientX + " y: " + event.clientY);
-		
-		// they have to be converted to relative positions, relating to the div
-
-
-
 		// these values are supposed to be the vector between 
 		// the centre of the image and where you want to zoom from
 		// in non-zoomed screen pixels
-//		var pos = $(self.div).position();
+
 		var x = event.clientX;
 		var y = event.clientY;
-	//	alert("x="+x+"y="+y);
-		
-		// for testing, force all zooms to be top left corner
-		// x = 300;
-		// y = 160;
-		
-		// //alert(pos.left);
-		// console.log(pos.left);
-		// console.log(pos.top);
-		
-		
-		// var a =$(self.div).width();
-		// alert($(self.div).width());
-		// alert($(self.div).height());
-		
-		//alert(pos.left +','+ pos.right +','+ pos.top +','+ pos.bottom);
-		
 
-		// alert(self.zoom);	
-		
-		
-		
+
 		// Z vector is in the coordinate system
 		// of the original image
 		// (obviously, when you zoom around one point
@@ -108,9 +70,7 @@ this.init_wheel = function()
 
 		var Zx = (x - self.centreX - self.posLeft); // 400
 		var Zy = (y - self.centreY - self.posTop); // 200
-	//	alert(Zx +','+ Zy);
-		
-	//	alert("x, " + x + " y: " + y);		
+
 			
 			if(delta > 0)
 			{
@@ -128,7 +88,7 @@ this.init_wheel = function()
 
 this.zoom_in = function(Zx,Zy)
 	{
-	// console.log("Zoom In");
+
 	var scaling = 1; // 100% increase
 
 	self.translationAccX -= Zx*scaling;
@@ -148,10 +108,8 @@ this.zoom_in = function(Zx,Zy)
 
 this.zoom_out = function(Zx,Zy)
 	{
-	// console.log("Zoom Out");	
+
 	var scaling = -self.zoom/2;
-	// var translateX = (Zx*-scaling);
-	// var translateY = (Zy*-scaling);
 
 	self.translationAccX -= Zx*scaling;
 
@@ -162,10 +120,6 @@ this.zoom_out = function(Zx,Zy)
 	self.zoom += scaling;	
 	
 	var scale = 'scale(' + self.zoom + ',' + self.zoom + ')';	
-	
-	
-	// self.centreX += Zx*-scaling;
-	// self.centreY += Zy*-scaling;
 
 	$(testbed.div).css('transform', translate+ scale);
 
