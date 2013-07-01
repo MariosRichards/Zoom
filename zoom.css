@@ -34,7 +34,14 @@ body
 	overflow: hidden;
 }
 
+.infotext
+{
+	position: absolute;
+	left: 1100px;
+	top: 800px;
+	z-index: 5;	
 
+}
 
 .vertical
 {
